@@ -3,7 +3,9 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/shopApp', { userNewUrlParser: true })
+const Product = require('./models/product');
+
+mongoose.connect('mongodb://localhost:27017/farmStand', { userNewUrlParser: true })
     .then(() => {
         console.log('Mongo CONNECTION OPEN!')
     })
@@ -15,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/shopApp', { userNewUrlParser: true }
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.get('/dogs', (req, res) => {
+app.get('/dog', (req, res) => {
     res.send('WOOF')
 })
 
