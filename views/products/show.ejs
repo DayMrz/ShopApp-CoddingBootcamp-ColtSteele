@@ -1,16 +1,25 @@
 <%- include('partials/head')%>
     <%- include('partials/header')%>
 
-        <h1>
-            <%= product.name %>
-        </h1>
-        <ul>
-            <li>Price: $<%= product.price %>
-            </li>
-            <li>Category: <%= product.category %>
-            </li>
-        </ul>
+        <div class="container">
+            <h1>
+                <%= product.name %>
+            </h1>
+            <figure class="figure">
+                <img src="<%=product.img%>" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">
+                    <ul>
+                        <li>Price: $<%= product.price %>
+                        </li>
+                        <li>Category: <%= product.category %>
+                        </li>
 
-        <a href="/products" class="text-success"> All Products</a>
+                    </ul>
+                </figcaption>
 
+            </figure>
+
+            <br>
+            <a href="/products" class="text-success"> All Products</a>
+        </div>
         <%- include('partials/footer') %>

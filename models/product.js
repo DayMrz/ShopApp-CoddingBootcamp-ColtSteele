@@ -13,6 +13,10 @@ const productSchema = new mongoose.Schema({
     category: {
         type: String,
         enum: ['fruit', 'vegetable', 'dairy']
+    },
+    imgURL: {
+        type: String,
+        required: true
     }
 })
 
