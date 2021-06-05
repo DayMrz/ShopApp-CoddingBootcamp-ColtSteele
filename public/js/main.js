@@ -14,7 +14,6 @@ carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 // button listeners
 
 nextBtn.addEventListener('click', () => {
-    // if (counter <= 0) return;
     carouselSlide.style.transition = "transform 0.4s ease in-out";
     counter++;
     // console.log(counter);
@@ -29,12 +28,17 @@ prevBtn.addEventListener('click', () => {
 });
 
 carouselSlide.addEventListener('transitionend', () => {
-    // console.log('fired!!');
-    console.log(carouselImages[counter]);
-    if (carouselImages[counter].id === 'lastClone') {
-        carouselSlide.style.transition = "none";
-        // console.log('none');
-        counter = carouselImages.length - 2;
-        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-    }
-});
+    console.log('fired!!');
+
+    // console.log(carouselImages[counter]);
+    // if (carouselImages[counter].id === "lastClone") {
+    //     carouselSlide.style.transition = "none";
+    // console.log('none');
+    //         counter = carouselImages.length - 2;
+    //         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    //     }
+    // });
+
+    // carouselSlide.addEventListener('transitionend', () => {
+    //     console.log('transition ended');
+})
