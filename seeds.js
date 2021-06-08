@@ -28,8 +28,7 @@ const seedProducts = [
     {
         name: 'Fairy Eggplant',
         price: 1.00,
-        category: 'vegetable',
-        img: ''
+        category: 'vegetable'
     },
     {
         name: 'Organic Goddess Melon',

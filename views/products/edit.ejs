@@ -3,14 +3,13 @@
 
 
         <div class="container">
-            <h1> Add A Product</h1>
-            <form action="/products" method="POST">
+            <h1> Edit Product</h1>
+            <form action="/products/<%=product.id %>" method="POST">
                 <label for="name">Product Name</label>
-                <input type="text" name="name" id="name" placeholder="product name">
+                <input type="text" name="name" id="name" placeholder="product name" value="<%= product.name%>">
                 <label for="price"> Price (unit)</label>
                 <input type="number" name="price" id="price" placeholder="type price">
-                <label for="category">Select Category </label>
-                <select name="category" id="category">
+                <select name="category" id="">
                     <option value="fruit">Fruit</option>
                     <option value="vegetable">Vegetable</option>
                     <option value="dairy">Dairy</option>
