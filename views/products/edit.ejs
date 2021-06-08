@@ -10,13 +10,19 @@
                 <label for="price"> Price (unit)</label>
                 <input type="number" name="price" id="price" placeholder="price" value="<%= product.price%>">
                 <select name="category" id="">
-                    <option value="fruit">Fruit</option>
-                    <option value="vegetable">Vegetable</option>
-                    <option value="dairy">Dairy</option>
+                    <option value="fruit" <%=product.category === 'fruit' ? 'selected' : ''  %> >Fruit</option>
+                    <option value="vegetable"<%=product.category === 'vegetable' ? 'selected' : ''  %> >Vegetable</option>
+                    <option value="dairy"<%=product.category === 'dairy' ? 'selected' : ''  %> >Dairy</option>
                 </select>
                 <button>Submit</button>
             </form>
+
+            <a href="/products">Go to All Products</a>
+            <a href="/products/<%=product._id%> ">Cancel</a>
+
         </div>
+
+        
 
         <%- include('partials/footer') %>
 

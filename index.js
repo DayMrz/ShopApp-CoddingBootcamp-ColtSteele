@@ -24,11 +24,15 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method')) //used for override the method
 
+//category 
+const categories = ['fruit', 'vegetable', 'dairy', 'fungi'];
+//
 
 app.get('/', (req, res) => {
     // res.send("Holi :)")
     res.render('products/home')
 })
+
 
 app.get('/products', async (req, res) => {
     const products = await Product.find({})
@@ -38,7 +42,7 @@ app.get('/products', async (req, res) => {
 
 })
 app.get('/products/new', (req, res) => {
-    res.render('products/new')
+    res.render('products/new', {categories})
 })
 app.post('/products', async (req, res) => {
     // console.log(req.body)
