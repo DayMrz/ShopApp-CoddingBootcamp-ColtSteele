@@ -4,6 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const Product = require('./models/product');
+const methodOverride = require('method-override');
+const { truncate } = require('fs');
 
 mongoose.connect('mongodb://localhost:27017/farmStand', { userNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -18,7 +20,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method')) //used for override the method
+
 
 app.get('/', (req, res) => {
     // res.send("Holi :)")
@@ -40,8 +45,8 @@ app.post('/products', async (req, res) => {
     const newProduct = new Product(req.body)
     await newProduct.save();
     console.log(newProduct)
-    res.send('Making Your product')
-    // res.redirect(`/products/${newProduct._id}`)
+    // res.send('Making Your product')
+    res.redirect(`/products/${newProduct._id}`)
 
 })
 
@@ -52,13 +57,22 @@ app.get('/products/:id', async (req, res) => {
     // res.send('details page')
     res.render('products/show', { product })
 })
-
-app.get('/product/:id/edit', async (req, res) => {
+// edit
+app.get('/products/:id/edit', async (req, res) => {
     const { id } = req.params;
    const product = await Product.findById(id);
     res.render('products/edit', {product})
 })
 
+app.put('/products/:id', async(req, res) => {
+//     console.log(req.body);
+//     res.send('PUT :)');
+const { id } = req.params;
+const product = await Product.findByIdAndUpdate(id, req.body, {runValidators: true, new: true, useFindAndModify: false});
+res.redirect(`/products/${product._id}`);
+
+})
+// 
 app.listen(3000, () => {
     console.log('APP IS LISTENING ON PORT 3000')
 })
