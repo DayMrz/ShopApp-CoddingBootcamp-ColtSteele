@@ -33,14 +33,27 @@ app.get('/', (req, res) => {
     res.render('products/home')
 })
 
-
-app.get('/products', async (req, res) => {
-    const products = await Product.find({})
+    //  app.get('/products', async (req, res) => { 
+    // const products = await Product.find({})
     // console.log(products) 1step
     // res.send('ALL PRODUCTS WILL BE HERE!') 1step
-    res.render('products/index', { products })
+    // res.render('products/index', { products })
+// })  
 
-})
+app.get('/products', async (req, res) => { 
+     // finding by category!!
+     const {category} = req.query;
+     if(category){ 
+        const products = await Product.find({ category })
+            res.render('products/index', { products, category })
+     } else {
+        const products = await Product.find({})
+             res.render('products/index', { products, category: 'All' })
+     }
+    })
+    //
+
+
 app.get('/products/new', (req, res) => {
     res.render('products/new', {categories})
 })
